@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-helm-operator  
+  name: postgres-helm-operator
 spec:
   replicas: 1
   selector:
@@ -11,24 +11,19 @@ spec:
     metadata:
       labels:
         name: postgres-helm-operator
-    spec:           
+    spec:
       containers:
       - name: primary
-        image: registry.redhat.io/rhel8/postgresql-12
+        image: postgres:12
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 5432
+        - containerPort: 8080
           protocol: TCP
         env:
-          - name: POSTGRESQL_USER
-            value: primary
-          - name: POSTGRESQL_PASSWORD
+          - name: POSTGRES_PASSWORD
             value: admin123
-          - name: POSTGRESQL_DATABASE
-            value: pgdb            
-        volumeMounts:
-        - name: postgresql-data
-          mountPath: /var/lib/postgresql/data
+          - name: POSTGRES_DATABASE
+            value: pgdb
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:
