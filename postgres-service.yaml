@@ -8,8 +8,8 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 5432
-      targetPort: 5432
+      port: 8080
+      targetPort: 8080
       name: primary
   selector:
     name: postgres-helm-operator
