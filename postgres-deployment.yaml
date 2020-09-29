@@ -17,13 +17,13 @@ spec:
         image: postgres:12
         imagePullPolicy: "Always"
         ports:
-        - containerPort: 8080
+        - containerPort: 5432
           protocol: TCP
         env:
           - name: POSTGRES_PASSWORD
-            value: admin123
-          - name: POSTGRES_DATABASE
-            value: pgdb
+            value: postgres
+          - name: POSTGRES_DB
+            value: contacts
       volumes:
       - name: postgresql-data
         persistentVolumeClaim:
