@@ -2,8 +2,7 @@ kind: PersistentVolume
 apiVersion: v1
 metadata:
   name: primary-pv
-  labels:
-    type: local
+  labels:    
     name: postgres-helm-operator 
 spec:
   storageClassName: manual
@@ -21,6 +20,7 @@ metadata:
   labels:
     name: postgres-helm-operator
 spec:
+  storageClassName: manual
   accessModes:
   - ReadWriteOnce
   resources:
